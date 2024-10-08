@@ -208,8 +208,7 @@ namespace ACT4
 
         }
 
-        private int beamSize = 5; // Adjust the beam size as needed
-
+        private int beamSize = 5;
         private List<SixState> beam = new List<SixState>();
 
         private void initializeBeam()
@@ -235,7 +234,6 @@ namespace ACT4
                 }
             }
 
-            // Select the best beamSize states from nextBeam based on their heuristic values
             nextBeam.Sort((x, y) => getAttackingPairs(x).CompareTo(getAttackingPairs(y)));
             beam = nextBeam.Take(beamSize).ToList();
         }
@@ -267,7 +265,7 @@ namespace ACT4
             {
                 executeMove((Point)chosenMove);
             }*/
-            int maxMoves = 1000; // Adjust the maximum number of moves as needed
+            int maxMoves = 1000; 
             int moveCount = 0;
 
             while (getAttackingPairs(currentState) > 0 && moveCount < maxMoves)
@@ -278,8 +276,7 @@ namespace ACT4
 
             if (moveCount >= maxMoves)
             {
-                // Search got stuck in a local minimum, you can implement a restart here
-                // For example:
+                
                 initializeBeam();
                 moveCount = 0;
             }
